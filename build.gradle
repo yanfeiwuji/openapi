@@ -1,0 +1,55 @@
+plugins {
+  id 'java'
+  id 'io.quarkus'
+}
+
+allprojects {
+  repositories {
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+    mavenLocal()
+    mavenCentral()
+  }
+}
+
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'io.quarkus:quarkus-spring-data-jpa'
+
+  // implementation 'io.quarkus:quarkus-keycloak-authorization'
+  implementation 'io.quarkus:quarkus-jdbc-mysql'
+
+  implementation 'org.apache.camel.quarkus:camel-quarkus-bean-validator'
+  implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+  // implementation 'io.quarkus:quarkus-smallrye-openapi'
+  implementation 'io.quarkus:quarkus-resteasy-jackson'
+  implementation 'io.quarkus:quarkus-arc'
+  implementation 'io.quarkus:quarkus-resteasy'
+  testImplementation 'io.quarkus:quarkus-junit5'
+
+  compileOnly 'org.projectlombok:lombok:1.18.16'
+  annotationProcessor 'org.projectlombok:lombok:1.18.16'
+  testCompileOnly 'org.projectlombok:lombok:1.18.16'
+  testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+}
+
+group 'com.yfwj'
+version '1.0-SNAPSHOT'
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_11
+  targetCompatibility = JavaVersion.VERSION_11
+}
+
+compileJava {
+  options.encoding = 'UTF-8'
+  options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+  options.encoding = 'UTF-8'
+}
