@@ -5,9 +5,10 @@ plugins {
 
 allprojects {
   repositories {
-    maven { url 'https://maven.aliyun.com/repository/public/' }
-    mavenLocal()
+
     mavenCentral()
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+//    mavenLocal()
   }
 }
 
@@ -18,6 +19,7 @@ repositories {
 }
 
 dependencies {
+  implementation 'io.quarkus:quarkus-hibernate-reactive-panache'
   implementation 'io.quarkus:quarkus-spring-data-jpa'
 
   // implementation 'io.quarkus:quarkus-keycloak-authorization'
